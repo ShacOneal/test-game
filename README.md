@@ -2,7 +2,7 @@
 
 A modern, multiplayer Ludo board game built with a strict monorepo architecture. The project separates the pure game logic from the React UI to ensure scalable, testable, and maintainable code.
 
-## 🚀 Tech Stack & Tooling Summary
+## Tech Stack & Tooling Summary
 
 **Architecture & Core**
 
