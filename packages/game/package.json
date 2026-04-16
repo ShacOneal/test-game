@@ -1,0 +1,6 @@
+{
+  "name": "@ludo/game",
+  "version": "0.0.0",
+  "main": "game.ts",
+  "types": "game.ts"
+}

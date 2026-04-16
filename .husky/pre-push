@@ -1,0 +1,2 @@
+node ./scripts/validate-branch.js
+npm run test:coverage

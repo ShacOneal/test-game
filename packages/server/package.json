@@ -1,0 +1,10 @@
+{
+  "name": "@ludo/server",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "server.ts",
+  "dependencies": {
+    "@ludo/game": "*",
+    "boardgame.io": "^0.50.2"
+  }
+}
