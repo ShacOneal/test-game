@@ -51,16 +51,18 @@ We use `@trivago/prettier-plugin-sort-imports` to keep the top of our files clea
 We use the official `prettier-plugin-tailwindcss`. This ensures that utility classes are always ordered according to the official Tailwind specification (e.g., layout -> sizing -> typography -> colors -> modifiers).
 
 **Before Save:**
-\`\`\`tsx
+
+```tsx
 import { Button } from './Button';
 import React, { useState } from 'react';
 import { Ludo } from '@ludo/game';
 
 <div className="z-10 p-4 absolute flex bg-red-500 text-white hover:bg-red-600">
-\`\`\`
+```
 
 **After Save:**
-\`\`\`tsx
+
+```tsx
 import React, { useState } from 'react';
 
 import { Ludo } from '@ludo/game';
@@ -68,7 +70,7 @@ import { Ludo } from '@ludo/game';
 import { Button } from './Button';
 
 <div className="absolute z-10 flex bg-red-500 p-4 text-white hover:bg-red-600">
-\`\`\`
+```
 
 #### VS Code Integration
 
