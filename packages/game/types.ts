@@ -1,0 +1,19 @@
+export interface Token {
+  id: string;
+  position: number;
+  status: 'BASE' | 'TRACK' | 'SAFE' | 'COMPLETE';
+}
+
+export interface PlayerData {
+  name: string | null;
+  color: string | null;
+  isReady: boolean;
+  delay: number;
+  tokens: Token[];
+}
+
+export interface LudoGameState {
+  players: Record<string, PlayerData>;
+  finishOrder: string[];
+  votes: { continue: number; exit: number };
+}
