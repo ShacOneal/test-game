@@ -18,9 +18,9 @@ export const setName: Move<LudoGameState> = ({ G, playerID }, name: string) => {
   if (!playerID || !G.players[playerID]) return INVALID_MOVE; // Validate playerID
 
   const cleanName = name
-    .trim()
+    .replace(/<|>|\$\{|\}/g, '')
     .replace(/\s+/g, ' ')
-    .replace(/<|>|\$\{|\}/g, ''); // Sanitize name
+    .trim(); // Sanitize name
 
   G.players[playerID].name = cleanName;
 };
