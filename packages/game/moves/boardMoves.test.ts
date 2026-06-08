@@ -145,6 +145,19 @@ describe('Board Moves', () => {
       expect(mockG.diceValue).toBe(4);
       expect(mockEvents.endTurn).not.toHaveBeenCalled();
     });
+
+    test('should reset dice but NOT end turn if no valid moves and roll is 6', () => {
+      mockG.diceValue = 6;
+      mockG.isRolling = true;
+      // Minden zseton bent van a célban, így nincs érvényes lépés
+      mockG.players['0'].tokens.forEach((t) => (t.status = 'COMPLETE'));
+
+      executeMove(resolveRoll, createBoardArgs(mockG, '0', mockEvents));
+
+      expect(mockG.isRolling).toBe(false);
+      expect(mockG.diceValue).toBeNull();
+      expect(mockEvents.endTurn).not.toHaveBeenCalled();
+    });
   });
 
   describe('moveToken', () => {

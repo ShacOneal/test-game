@@ -56,7 +56,7 @@ export const castVote: Move<LudoGameState> = (
 
   if (voteType === 'continue') {
     G.votes.continue += 1;
-  } else if (voteType === 'exit') {
+  } else {
     G.votes.exit += 1;
   }
 

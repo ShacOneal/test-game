@@ -48,7 +48,7 @@ export const resolveRoll: Move<LudoGameState> = ({ G, playerID, events }) => {
           t.status === newStatus &&
           newStatus !== 'COMPLETE',
       );
-      if (isSelfStacking) {
+      if (!isSelfStacking) {
         hasValidMove = true;
         break; // We just need to know if there's at least one valid move
       }
