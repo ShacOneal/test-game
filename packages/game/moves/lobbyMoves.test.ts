@@ -140,4 +140,18 @@ describe('Lobby Moves', () => {
       expect(mockG.votes.continue).toBe(0);
     });
   });
+
+  describe('Missing Branch Coverage Tests', () => {
+    test('setColor should return INVALID_MOVE for missing playerID', () => {
+      expect(executeMove(setColor, createLobbyArgs(mockG, '99'), 'red')).toBe(
+        INVALID_MOVE,
+      );
+    });
+
+    test('castVote should return INVALID_MOVE for missing playerID', () => {
+      expect(
+        executeMove(castVote, createLobbyArgs(mockG, '99'), 'continue'),
+      ).toBe(INVALID_MOVE);
+    });
+  });
 });

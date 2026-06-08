@@ -134,6 +134,17 @@ describe('Board Moves', () => {
       expect(mockG.diceValue).toBeNull();
       expect(mockEvents.endTurn).toHaveBeenCalledTimes(1);
     });
+
+    test('should NOT end turn and keep diceValue if a valid move exists', () => {
+      mockG.diceValue = 4;
+      mockG.isRolling = true;
+      // A 0-ás játékos 1-es zsetonja a 10-es mezőn van, a 4-es dobás érvényes (14-re léphet)
+      executeMove(resolveRoll, createBoardArgs(mockG, '0', mockEvents));
+
+      expect(mockG.isRolling).toBe(false);
+      expect(mockG.diceValue).toBe(4);
+      expect(mockEvents.endTurn).not.toHaveBeenCalled();
+    });
   });
 
   describe('moveToken', () => {
