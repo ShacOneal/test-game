@@ -23,6 +23,7 @@ export const setupLudo = ({
       color: null,
       isReady: false,
       delay: i * 13, // The crucial mathematical offset for turn order
+      hasVoted: false,
       tokens: tokenMaker2000(id),
     };
   }
@@ -33,5 +34,6 @@ export const setupLudo = ({
       continue: 0,
       exit: 0,
     },
+    diceValue: null,
   };
 };

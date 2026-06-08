@@ -9,11 +9,14 @@ export interface PlayerData {
   color: string | null;
   isReady: boolean;
   delay: number;
+  hasVoted: boolean;
   tokens: Token[];
 }
 
 export interface LudoGameState {
   players: Record<string, PlayerData>;
   finishOrder: string[];
+  diceValue: number | null;
+  isRolling?: boolean;
   votes: { continue: number; exit: number };
 }

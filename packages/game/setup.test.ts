@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-
 import { setupLudo } from './setup';
 
 describe('Ludo Factory: setupLudo()', () => {
