@@ -32,7 +32,6 @@ const createBoardArgs = (
   random,
 });
 
-// A Board move-ok biztonságos futtatója
 const executeMove = <T extends unknown[]>(
   move: unknown,
   ctxArg: BoardContext,
@@ -75,7 +74,7 @@ describe('Board Moves', () => {
           hasVoted: false,
           tokens: [
             { id: 't_1_0', position: 14, status: 'TRACK' },
-            { id: 't_1_1', position: 0, status: 'BASE' }, // NEW: 'BASE' token az ellenfélnél a knockout loop lefedéséhez
+            { id: 't_1_1', position: 0, status: 'BASE' },
           ],
         },
       },
@@ -191,21 +190,16 @@ describe('Board Moves', () => {
       mockG.diceValue = 4;
       mockG.isRolling = true;
 
-      // Token 0 nem mozoghat (BASE-ben van, de a dobás 4)
       mockG.players['0'].tokens[0].status = 'BASE';
 
-      // Token 1 az 51-es pozícióban van (dobás: 4 -> 55-ös mezőre lépne)
       mockG.players['0'].tokens[1].position = 51;
       mockG.players['0'].tokens[1].status = 'TRACK';
 
-      // Hozzáadunk egy Token 2-t pontosan az 55-ös mezőre.
-      // Így a Token 1 lépését blokkolja a self-stacking szabály.
       mockG.players['0'].tokens.push({
         id: 't_0_2',
         position: 55,
         status: 'SAFE',
       });
-      // Token 2 dobása 4-gyel 59-re vinne, ami túlcsordul, így neki sincs érvényes lépése.
 
       executeMove(resolveRoll, createBoardArgs(mockG, '0', mockEvents));
 
@@ -218,14 +212,13 @@ describe('Board Moves', () => {
       mockG.diceValue = 2;
       mockG.isRolling = true;
 
-      // Beállítjuk a zsetont úgy, hogy pontosan a célba (57) tudjon lépni
       mockG.players['0'].tokens[1].position = 55;
       mockG.players['0'].tokens[1].status = 'SAFE';
 
       executeMove(resolveRoll, createBoardArgs(mockG, '0', mockEvents));
 
       expect(mockG.isRolling).toBe(false);
-      expect(mockG.diceValue).toBe(2); // A dobás megmarad, mert érvényes a lépés
+      expect(mockG.diceValue).toBe(2);
       expect(mockEvents.endTurn).not.toHaveBeenCalled();
     });
   });
@@ -264,7 +257,6 @@ describe('Board Moves', () => {
     });
 
     test('should return INVALID_MOVE if newPosition is null (e.g. overshooting)', () => {
-      // 55-ös pozíció + 4-es dobás = 59 (Érvénytelen)
       mockG.players['0'].tokens[1].position = 55;
       mockG.players['0'].tokens[1].status = 'SAFE';
 
@@ -277,8 +269,6 @@ describe('Board Moves', () => {
     });
 
     test('should return INVALID_MOVE if stacking on own token', () => {
-      // Az 1-es token a 10-en van, a dobás 4, tehát a 14-re lépne.
-      // Rárakjuk a 0-ás tokent a 14-re, hogy blokkolja.
       mockG.players['0'].tokens[0].position = 14;
       mockG.players['0'].tokens[0].status = 'TRACK';
 
@@ -314,7 +304,6 @@ describe('Board Moves', () => {
       executeMove(moveToken, createBoardArgs(mockG, '0', mockEvents), 1);
 
       expect(mockG.players['0'].tokens[1].position).toBe(27);
-      // Az ellenfél 0-ás tokenje kiütve
       expect(mockG.players['1'].tokens[0].position).toBe(0);
       expect(mockG.players['1'].tokens[0].status).toBe('BASE');
     });

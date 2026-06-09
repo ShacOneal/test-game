@@ -167,7 +167,6 @@ describe('Lobby Moves', () => {
     });
 
     test('setColor should return INVALID_MOVE if playerID is missing', () => {
-      // Ez már megvan, de biztosítsd, hogy a mockG-ben a playerID ne legyen definiálva
       expect(executeMove(setColor, createLobbyArgs(mockG, '99'), 'red')).toBe(
         INVALID_MOVE,
       );
