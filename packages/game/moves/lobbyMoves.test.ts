@@ -153,5 +153,24 @@ describe('Lobby Moves', () => {
         executeMove(castVote, createLobbyArgs(mockG, '99'), 'continue'),
       ).toBe(INVALID_MOVE);
     });
+
+    test('toggleReady should return INVALID_MOVE for missing playerID', () => {
+      expect(executeMove(toggleReady, createLobbyArgs(mockG, '99'))).toBe(
+        INVALID_MOVE,
+      );
+    });
+
+    test('setName should return INVALID_MOVE for missing playerID', () => {
+      expect(
+        executeMove(setName, createLobbyArgs(mockG, '99'), 'NewName'),
+      ).toBe(INVALID_MOVE);
+    });
+
+    test('setColor should return INVALID_MOVE if playerID is missing', () => {
+      // Ez már megvan, de biztosítsd, hogy a mockG-ben a playerID ne legyen definiálva
+      expect(executeMove(setColor, createLobbyArgs(mockG, '99'), 'red')).toBe(
+        INVALID_MOVE,
+      );
+    });
   });
 });
