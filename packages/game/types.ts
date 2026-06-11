@@ -8,7 +8,7 @@ export interface PlayerData {
   name: string | null;
   color: string | null;
   isReady: boolean;
-  delay: number;
+  startSpace: number;
   tokens: Token[];
 }
 

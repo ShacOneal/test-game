@@ -22,7 +22,7 @@ export const setupLudo = ({
       name: null,
       color: null,
       isReady: false,
-      delay: i * 13, // The crucial mathematical offset for turn order
+      startSpace: i * 13, // The starting space on the map for each player is determined by multiplying their index by 13
       tokens: tokenMaker2000(id),
     };
   }

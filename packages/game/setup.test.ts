@@ -30,8 +30,8 @@ describe('Ludo Factory: setupLudo()', () => {
     expect(playerZero.color).toBeNull();
     expect(playerZero.isReady).toBe(false);
 
-    expect(G.players['0'].delay).toBe(0);
-    expect(G.players['1'].delay).toBe(13);
+    expect(G.players['0'].startSpace).toBe(0);
+    expect(G.players['1'].startSpace).toBe(13);
   });
 
   // TEST 3: Dynamic Player Loop (Simulating a 4-player game)
@@ -42,8 +42,8 @@ describe('Ludo Factory: setupLudo()', () => {
     expect(playerIDs).toHaveLength(4);
     expect(playerIDs).toEqual(['0', '1', '2', '3']);
 
-    expect(G.players['0'].delay).toBe(0);
-    expect(G.players['3'].delay).toBe(39);
+    expect(G.players['0'].startSpace).toBe(0);
+    expect(G.players['3'].startSpace).toBe(39);
   });
 
   test('should generate exactly 4 tokens per player with correct IDs, position, and BASE status', () => {
