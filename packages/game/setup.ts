@@ -23,6 +23,7 @@ export const setupLudo = ({
       color: null,
       isReady: false,
       startSpace: i * 13, // The starting space on the map for each player is determined by multiplying their index by 13
+      hasVoted: false,
       tokens: tokenMaker2000(id),
     };
   }
@@ -33,5 +34,6 @@ export const setupLudo = ({
       continue: 0,
       exit: 0,
     },
+    diceValue: null,
   };
 };
