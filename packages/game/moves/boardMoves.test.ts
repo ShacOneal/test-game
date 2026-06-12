@@ -59,7 +59,7 @@ describe('Board Moves', () => {
           name: 'Player 0',
           color: 'red',
           isReady: true,
-          delay: 0,
+          startSpace: 0,
           hasVoted: false,
           tokens: [
             { id: 't_0_0', position: 0, status: 'BASE' },
@@ -70,7 +70,7 @@ describe('Board Moves', () => {
           name: 'Player 1',
           color: 'blue',
           isReady: true,
-          delay: 13,
+          startSpace: 13,
           hasVoted: false,
           tokens: [
             { id: 't_1_0', position: 14, status: 'TRACK' },

@@ -103,14 +103,14 @@ export const moveToken: Move<LudoGameState> = (
   token.status = newStatus;
 
   if (token.status === 'TRACK') {
-    const myAbsolutePosition = (token.position + player.delay) % 52;
+    const myAbsolutePosition = (token.position + player.startSpace) % 52;
 
     Object.entries(G.players).forEach(([otherPlayerID, otherPlayer]) => {
       if (otherPlayerID !== playerID) {
         otherPlayer.tokens.forEach((otherToken) => {
           if (otherToken.status === 'TRACK') {
             const theirAbsolutePosition =
-              (otherToken.position + otherPlayer.delay) % 52;
+              (otherToken.position + otherPlayer.startSpace) % 52;
 
             if (myAbsolutePosition === theirAbsolutePosition) {
               otherToken.position = 0;
